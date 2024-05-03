@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json())
 
-app.post('/api', createBookRoute )
+app.use('/api', createBookRoute )
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
