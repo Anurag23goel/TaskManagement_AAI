@@ -1,6 +1,6 @@
-const { useState } = require("react");
 import { useNavigate } from 'react-router-dom';
 import './CSS/AuthPage.css'
+const { useState } = require("react");
 
 function AuthPage() {
   const [name, setName] = useState("");
