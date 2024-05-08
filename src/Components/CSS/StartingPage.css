@@ -1,0 +1,159 @@
+/* Overall Styling */
+.starting-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes up full viewport height */
+  background-color: #f0f2f5;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Card Styling */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 40px;
+  text-align: center;  
+}
+
+.content .title {
+  color: #3e64ff;
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+.content .subtitle {
+  color: #555;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+/* Button Styling */
+.action-button {
+  background-color: #3e64ff; 
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.action-button:hover {
+  background-color: #0336ff; 
+}
+
+.add-button {
+  margin-right: 20px;
+}
+
+/* Optional: Subtle Background Pattern */
+body {
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/congruent_pentagon.png"); /* Replace with a pattern image of your choice */
+} /* Overall Styling */
+.starting-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); /* Vibrant gradient */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Card Styling */
+.card {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    text-align: center;  
+}
+
+.content .title {
+    color: #333; /* Darker title for contrast */
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.content .subtitle {
+    color: #666; 
+    font-size: 1.3em;
+    margin-bottom: 35px;
+}
+
+/* Button Styling */
+.action-button {
+    background-color: #3e64ff; 
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(50, 50, 90, 0.2);
+    transition: all 0.3s ease; 
+}
+
+.action-button:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 10px rgba(50, 50, 90, 0.3);
+}
+
+.add-button {
+    margin-right: 25px;
+}
+/* Overall Styling */
+.starting-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); /* Vibrant gradient */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Card Styling */
+.card {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  text-align: center;  
+}
+
+.content .title {
+  color: #333; /* Darker title for contrast */
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.content .subtitle {
+  color: #666; 
+  font-size: 1.3em;
+  margin-bottom: 35px;
+}
+
+/* Button Styling */
+.action-button {
+  background-color: #3e64ff; 
+  color: #fff;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(50, 50, 90, 0.2);
+  transition: all 0.3s ease; 
+}
+
+.action-button:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(50, 50, 90, 0.3);
+}
+
+.add-button {
+  margin-right: 25px;
+}
+
