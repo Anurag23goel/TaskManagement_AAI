@@ -6,6 +6,7 @@ import StartingPage from './Components/StartingPage.jsx';
 import UpdateTask from './Components/UpdateTask.jsx';
 import AuthPage from './Components/AuthPage.jsx';
 import LoginPage from './Components/LoginPage.jsx';
+import PrivateRoute from './Components/PrivateRoute.jsx';
 
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path='/' element={<LoginPage/>}/>
+          <Route exact path='home' element={<StartingPage/>}/>
         <Route exact path='/register' element={<AuthPage/>}/>
-        <Route exact path='/firstPage' element={<StartingPage/>}/>
         <Route exact path='/addTask' element={<CreateBook/>}/>
         <Route exact path='/viewTasks' element={<ViewTasks/>}/>
         <Route exact path='/updateTask/:bid' element={<UpdateTask/>}/>
@@ -23,4 +24,7 @@ function App() {
   );
 }
 
-export default App;
+export default App
+
+
+
