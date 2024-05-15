@@ -1,61 +1,60 @@
 .container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .container h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .container form {
-    margin-top: 20px;
-  }
-  
-  .container label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-  }
-  
-  .container input[type="email"],
-  .container input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .container input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 14px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  .container input[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-  
-  .container a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .container a:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.container h1 {
+  text-align: center;
+  color: #333;
+}
+
+.container form {
+  margin-top: 20px;
+}
+
+.container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.container input[type="email"],
+.container input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.container input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.container input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.container a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}

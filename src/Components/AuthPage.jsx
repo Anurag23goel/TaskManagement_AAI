@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import './CSS/AuthPage.css'
 const { useState } = require("react");
+import { useNavigate } from "react-router-dom";
+import "./CSS/AuthPage.css";
 
 function AuthPage() {
   const [name, setName] = useState("");
@@ -8,32 +8,31 @@ function AuthPage() {
   const [password, setPassword] = useState("");
 
   async function registerUser(e) {
-    e.preventDefault()
-    const response = await fetch('http://localhost:5000/user/register' , {
-      method:'POST',
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/user/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name, email, password
+        name,
+        email,
+        password,
       }),
-    })
+    });
 
-    const data = await response.json()
-    
+    const data = await response.json();
 
     console.log(data);
 
-    window.location.href = '/'
-
+    window.location.href = "/";
   }
-  
-  
+
   return (
-    <div className='auth-container'>
+    <div className="auth-container">
       <h1>Airport Authority of India</h1>
       <form onSubmit={registerUser}>
-      <h1>Register Here</h1>
+        <h1>Register Here</h1>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -71,4 +70,4 @@ function AuthPage() {
   );
 }
 
-export default AuthPage
+export default AuthPage;
