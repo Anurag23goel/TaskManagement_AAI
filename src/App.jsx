@@ -11,8 +11,8 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      localStorage.removeItem('token');
+    if (location.pathname === "/") {
+      localStorage.removeItem("token");
     }
   }, [location]);
 
