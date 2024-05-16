@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -15,6 +15,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // tasks: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Todo",
+  //   },
+  // ],
   token: {
     type: String,
     default: null,

@@ -4,6 +4,7 @@ const User = require("../Models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { login } = require("../utils/login.js");
+const {getUsers} = require('../utils/getUsers.js')
 
 const registerUser = async (req, res) => {
   try {
@@ -26,10 +27,14 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const token = await login(req.body.email, req.body.password); // Await the login function
+    const { existingUser, token } = await login(
+      req.body.email,
+      req.body.password
+    ); // Await the login function
+    //console.log(token, existingUser);
 
     // Fetch user details here
-    const existingUser = await User.findOne({ email: req.body.email });
+    //const existingUser = await User.findOne({ email: req.body.email });
 
     res.json({ status: "ok", token: token, user: existingUser }); // Include user in response
   } catch (error) {
@@ -37,7 +42,18 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const user = await getUsers(); // Assuming getUsers is a function that fetches users
+    res.json(user);
+    
+  } catch (error) {
+    res.status(500).json({ message: error.message || 'An error occurred' });
+  }
+}
+
 module.exports = {
   registerUser,
   loginUser,
+  getUser
 };

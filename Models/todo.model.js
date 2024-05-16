@@ -20,6 +20,10 @@ const todoSchema = new mongoose.Schema({
   priority: {
     type: String,
     required: true
+  },
+  user : {
+    type: mongoose.Schema.Types.ObjectId, // Reference to User model
+    ref: 'User' // Name of the referenced model
   }
 });
 

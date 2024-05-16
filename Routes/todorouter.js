@@ -3,17 +3,18 @@ const router = express.Router();
 const todo = require('../Models/todo.model.js');
 const bodyParser = require('body-parser');
 
-
 // Parse request bodies for PUT requests
 router.use(bodyParser.json());
 
+
 router.post('/addTodo', async (req, res) => {
     try {
-        const newTodo = new todo({
+            const newTodo = new todo({
             title: req.body.task_name,
             description: req.body.task_description,
             status: req.body.task_status,
             priority: req.body.task_priority,
+            user: req.body.userID
         });
     
         const savedTodo = await newTodo.save();
