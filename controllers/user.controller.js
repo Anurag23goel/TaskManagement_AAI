@@ -4,10 +4,11 @@ const User = require("../Models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { login } = require("../utils/login.js");
-const {getUsers} = require('../utils/getUsers.js')
+const { getUsers } = require("../utils/getUsers.js");
 
 const registerUser = async (req, res) => {
   try {
+
     const hashPassword = await bcrypt.hash(req.body.password, 10); // Await the password hashing
     const user = await User.create({
       name: req.body.name,
@@ -46,14 +47,13 @@ const getUser = async (req, res) => {
   try {
     const user = await getUsers(); // Assuming getUsers is a function that fetches users
     res.json(user);
-    
   } catch (error) {
-    res.status(500).json({ message: error.message || 'An error occurred' });
+    res.status(500).json({ message: error.message || "An error occurred" });
   }
-}
+};
 
 module.exports = {
   registerUser,
   loginUser,
-  getUser
+  getUser,
 };
