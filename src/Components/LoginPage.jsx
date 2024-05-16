@@ -22,6 +22,8 @@ const LoginPage = () => {
     });
 
     const data = await response.json();
+    localStorage.setItem('token', data.token)
+    localStorage.setItem ('userID', data.user._id)
 
     if (data.user) {
       setIsLogin(true);
@@ -33,10 +35,10 @@ const LoginPage = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(isLogin); // Log the updated value of isLogin
-    // You can put any side effects dependent on isLogin here
-  }, [isLogin]); // Run this effect whenever isLogin changes
+  // useEffect(() => {
+  //   console.log(isLogin); // Log the updated value of isLogin
+  //   // You can put any side effects dependent on isLogin here
+  // }, [isLogin]); // Run this effect whenever isLogin changes
 
   return (
     <div className="container">
@@ -64,7 +66,7 @@ const LoginPage = () => {
         <a href="/register">Create Account</a>
       </form>
 
-      {isLogin && <Outlet />} {/* Conditional rendering based on isLogin */}
+      {/* {isLogin && <Outlet />} Conditional rendering based on isLogin */}
     </div>
   );
 };

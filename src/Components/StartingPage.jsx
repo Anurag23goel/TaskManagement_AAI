@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CSS/StartingPage.css'; // Import the CSS file for additional styling
 
-
 const StartingPage = () => {
   const navigate = useNavigate();
-
- 
 
   const handleAddTask = () => {
     // Navigate to the desired URL when the button is clicked
@@ -18,6 +15,11 @@ const StartingPage = () => {
     navigate('/viewTasks');
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/');
+  };
+
   return (
     <div className="starting-page-container">
       <div className="card">
@@ -27,6 +29,7 @@ const StartingPage = () => {
           <div className="button-container">
             <button className="action-button add-button" onClick={handleAddTask}>ADD TASK</button>
             <button className="action-button view-button" onClick={handleViewTask}>VIEW TASK</button>
+            <button className="action-button logout-button" onClick={handleLogout}>LOGOUT</button>
           </div>
         </div>
       </div>

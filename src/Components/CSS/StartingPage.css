@@ -157,3 +157,46 @@ body {
   margin-right: 25px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column; /* Adjusted to align buttons vertically */
+  align-items: center;
+}
+
+.action-button {
+  padding: 10px 20px;
+  margin: 10px 0; /* Adjusted margin for vertical alignment */
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+.view-button {
+  background-color: #008CBA;
+  color: white;
+}
+
+.view-button:hover {
+  background-color: #007bb5;
+}
+
+.logout-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
