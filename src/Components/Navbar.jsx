@@ -1,20 +1,19 @@
-// Navbar.jsx
-
 import React from "react";
 import { Link } from "react-router-dom";
+import "./CSS/Navbar.css"; // Import CSS file for additional styling
 
-const Navbar = ({ handleLogout }) => {
+const Navbar = ({ handleLogout, userName }) => {
   return (
-    <header style={{ backgroundColor: "#3498db", padding: "1rem 0" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h1 style={{ color: "#ffffff", fontSize: "1.5rem", fontWeight: "bold" }}>Task Manager</h1>
+    <header className="navbar-header">
+      <div className="navbar-container">
+        <h1 className="navbar-title">Hello, {userName}!</h1>
         <nav>
-          <ul style={{ display: "flex", gap: "1rem", color: "#ffffff" }}>
+          <ul className="navbar-links">
             <li>
-              <Link to="/home" style={{ textDecoration: "none", color: "#ffffff" }} className="hover:text-gray-200">Home</Link>
+              <Link to="/home" className="navbar-link">Home</Link>
             </li>
             <li>
-              <button onClick={handleLogout} style={{ border: "none", backgroundColor: "transparent", cursor: "pointer", color: "#ffffff" }} className="hover:text-gray-200 focus:outline-none">Logout</button>
+              <button onClick={handleLogout} className="navbar-button">Logout</button>
             </li>
           </ul>
         </nav>

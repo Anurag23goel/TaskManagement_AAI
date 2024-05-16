@@ -6,6 +6,7 @@ import "./CSS/ViewTasks.css";
 
 const ViewTasks = () => {
   const [taskData, setTaskData] = useState([]);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
   
   const getTasks = async () => {
@@ -14,7 +15,8 @@ const ViewTasks = () => {
       const response = await axios.get(
         `http://localhost:5000/api/viewTasks?userID=${userID}`
       );
-      setTaskData(response.data);
+      setTaskData(response.data.tasks);
+      setUserName(response.data.user.name);
     } catch (error) {
       console.error("Error fetching tasks:", error);
     }
@@ -47,7 +49,7 @@ const ViewTasks = () => {
   return (
     <div>
       <header>
-        <Navbar handleLogout={handleLogout} />
+      <Navbar userName={userName} handleLogout={handleLogout} />
       </header>
       <div className="container mx-auto p-6">
         <h1 className="text-3xl font-bold mb-4">My Tasks</h1>
