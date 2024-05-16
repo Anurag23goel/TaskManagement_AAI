@@ -18,7 +18,8 @@ router.post("/addTodo", async (req, res) => {
     });
 
     const savedTodo = await newTodo.save();
-    res.json(savedTodo);
+    res.json({ status: true, savedTodo });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred while adding the todo." });
@@ -31,7 +32,7 @@ router.get("/viewTasks", async (req, res) => {
     //console.log(userID);
 
     const user = await User.findById(userID)
-    const userName = user.name
+    
 
     // Query todos with the userID filter
     const tasks = await todo.find({ user: userID });
