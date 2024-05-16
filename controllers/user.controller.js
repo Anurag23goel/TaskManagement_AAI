@@ -8,7 +8,6 @@ const { getUsers } = require("../utils/getUsers.js");
 
 const registerUser = async (req, res) => {
   try {
-
     const hashPassword = await bcrypt.hash(req.body.password, 10); // Await the password hashing
     const user = await User.create({
       name: req.body.name,

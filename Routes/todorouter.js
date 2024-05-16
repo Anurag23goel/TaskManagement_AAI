@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const todo = require("../Models/todo.model.js");
+const User = require("../Models/user.model.js")
 const bodyParser = require("body-parser");
 
 // Parse request bodies for PUT requests
@@ -29,10 +30,14 @@ router.get("/viewTasks", async (req, res) => {
     const userID = req.query.userID; // Assuming userID is passed as a query parameter
     //console.log(userID);
 
+    const user = await User.findById(userID)
+    const userName = user.name
+
     // Query todos with the userID filter
     const tasks = await todo.find({ user: userID });
+    //console.log(tasks);
 
-    res.status(200).json(tasks);
+    res.status(200).json({tasks:tasks, user:user});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred while fetching tasks." });
