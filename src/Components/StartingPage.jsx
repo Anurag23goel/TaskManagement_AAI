@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CSS/StartingPage.css'; // Import the CSS file for additional styling
 
 const StartingPage = () => {
   const navigate = useNavigate();
+
+  const checkLoggedIn = () => {
+    const token = localStorage.getItem('token')
+    // console.log(token);
+    if(!token){
+      navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    checkLoggedIn()
+  })
 
   const handleAddTask = () => {
     // Navigate to the desired URL when the button is clicked

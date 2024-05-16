@@ -25,6 +25,18 @@ const ViewTasks = () => {
     getTasks();
   }, []);
 
+  const checkLoggedIn = () => {
+    const token = localStorage.getItem('token')
+    // console.log(token);
+    if(!token){
+      navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    checkLoggedIn()
+  })
+
   const deleteTask = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/deleteTask/${id}`);

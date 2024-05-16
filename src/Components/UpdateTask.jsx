@@ -1,77 +1,84 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import './CSS/UpdateTask.css'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "./CSS/UpdateTask.css";
+import axios from "axios";
 
 const UpdateTask = () => {
-  
-    const {bid} = useParams();
+  const { bid } = useParams();
 
-    const navigate = useNavigate()
+  const checkLoggedIn = () => {
+    const token = localStorage.getItem("token");
+    // console.log(token);
+    if (!token) {
+      navigate("/");
+    }
+  };
 
-    const [TodoData, setTodoData] = useState({
+  useEffect(() => {
+    checkLoggedIn();
+  });
+
+  const navigate = useNavigate();
+
+  const [TodoData, setTodoData] = useState({
+    task_name: "",
+    task_description: "",
+    task_status: "",
+    task_priority: "",
+  });
+
+  // this part of code is to fetch info about task when we need to update
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/viewTasks/${bid}`)
+      .then((response) => {
+        setTodoData({
+          ...TodoData,
+          task_name: response.data.title,
+          task_description: response.data.description,
+          task_status: response.data.status,
+          task_priority: response.data.priority,
+        });
+      })
+      .then((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTodoData({
+      ...TodoData,
+      [name]: value,
+    });
+  };
+
+  // console.log(TodoData.task_name);
+
+  //this part of code is to update changes
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api//updateTask/${bid}`,
+        TodoData
+      );
+      //console.log(response.data);
+      setTodoData({
         task_name: "",
         task_description: "",
         task_status: "",
         task_priority: "",
       });
+      // console.log(response.data);
+      navigate("/viewTasks");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    // this part of code is to fetch info about task when we need to update
-      useEffect(() => {
-        axios.get(`http://localhost:5000/api/viewTasks/${bid}`)
-        .then(response => {
-            setTodoData(
-                {
-                    ...TodoData,
-                    task_name: response.data.title,
-                    task_description: response.data.description,
-                    task_status: response.data.status,
-                    task_priority: response.data.priority,
-                }
-            )
-        })
-        .then(error => {
-            console.log(error);
-        })
-      },[])
-
-      const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setTodoData({
-          ...TodoData,
-          [name]: value,
-        });
-        
-      };
-
-      // console.log(TodoData.task_name);
-
-      
-      //this part of code is to update changes
-      const handleFormSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-          const response = await axios.put(
-            `http://localhost:5000/api//updateTask/${bid}`,
-            TodoData
-          );
-          //console.log(response.data);
-          setTodoData({
-            task_name: "",
-            task_description: "",
-            task_status: "",
-            task_priority: "",
-          });
-          // console.log(response.data);
-          navigate('/viewTasks')
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-    
-    return (
+  return (
     <div>
       <fieldset>
         <legend>Update Task</legend>
@@ -105,7 +112,9 @@ const UpdateTask = () => {
             value={TodoData.task_priority}
             onChange={handleInputChange}
           >
-            <option hidden selected>Select One</option>
+            <option hidden selected>
+              Select One
+            </option>
             <option value="High">High</option>
             <option value="Moderate">Moderate</option>
             <option value="Low">Low</option>
@@ -119,7 +128,9 @@ const UpdateTask = () => {
             value={TodoData.task_status}
             onChange={handleInputChange}
           >
-            <option hidden selected>Select One</option>
+            <option hidden selected>
+              Select One
+            </option>
             <option value="Completed">Completed</option>
             <option value="Pending">Pending</option>
           </select>
@@ -134,7 +145,7 @@ const UpdateTask = () => {
         </div>
       </fieldset>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateTask
+export default UpdateTask;

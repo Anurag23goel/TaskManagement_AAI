@@ -13,6 +13,18 @@ function CreateBook() {
     userID: localStorage.getItem("userID"),
   });
 
+  const checkLoggedIn = () => {
+    const token = localStorage.getItem('token')
+    // console.log(token);
+    if(!token){
+      navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    checkLoggedIn()
+  })
+
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
 
