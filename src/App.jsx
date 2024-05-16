@@ -6,7 +6,7 @@ import StartingPage from "./Components/StartingPage.jsx";
 import UpdateTask from "./Components/UpdateTask.jsx";
 import AuthPage from "./Components/AuthPage.jsx";
 import LoginPage from "./Components/LoginPage.jsx";
-import PrivateRoute from "./Components/PrivateRoute.jsx";
+
 
 function App() {
   return (
