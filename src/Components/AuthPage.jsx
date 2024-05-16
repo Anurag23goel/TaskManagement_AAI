@@ -1,14 +1,24 @@
-const { useState } = require("react");
-import { useNavigate } from "react-router-dom";
 import "./CSS/AuthPage.css";
+import { useState } from "react";
 
-function AuthPage() {
+const AuthPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   async function registerUser(e) {
     e.preventDefault();
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match!");
+      return;
+    }
+
     const response = await fetch("http://localhost:5000/user/register", {
       method: "POST",
       headers: {
@@ -25,14 +35,27 @@ function AuthPage() {
 
     console.log(data);
 
-    window.location.href = "/";
+    if (data.success) {
+      window.location.href = "/";
+    } else {
+      setErrorMessage(data.message || "An error occurred during registration.");
+    }
   }
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+  };
 
   return (
     <div className="auth-container">
       <h1>Airport Authority of India</h1>
       <form onSubmit={registerUser}>
         <h1>Register Here</h1>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -54,20 +77,38 @@ function AuthPage() {
           }}
         />
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          placeholder="Enter Your Password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
+        <div className="password-container">
+          <input
+            type={passwordVisible ? "text" : "password"}
+            name="password"
+            value={password}
+            placeholder="Enter Your Password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <button type="button" onClick={togglePasswordVisibility}>
+            {passwordVisible ? "Hide" : "Show"}
+          </button>
+        </div>
+        <label htmlFor="confirmPassword">Confirm Password</label>
+        <div className="password-container">
+          <input
+            type={confirmPasswordVisible ? "text" : "password"}
+            name="confirmPassword"
+            value={confirmPassword}
+            placeholder="Enter Your Password Again"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <button type="button" onClick={toggleConfirmPasswordVisibility}>
+            {confirmPasswordVisible ? "Hide" : "Show"}
+          </button>
+        </div>
         <input type="submit" value="Register" />
-        <a href="/">Already a User ?</a>
+        <a href="/">Already a User?</a>
       </form>
     </div>
   );
-}
+};
 
 export default AuthPage;

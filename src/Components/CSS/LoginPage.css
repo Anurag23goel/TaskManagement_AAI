@@ -1,60 +1,81 @@
 .container {
   max-width: 400px;
   margin: auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
 
-.container h1 {
+h1 {
   text-align: center;
   color: #333;
 }
 
-.container form {
-  margin-top: 20px;
-}
-
-.container label {
+label {
   display: block;
-  margin-bottom: 8px;
+  margin: 0.5rem 0 0.2rem;
   color: #555;
 }
 
-.container input[type="email"],
-.container input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: calc(100% - 22px);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
-.container input[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 14px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+input[type="submit"] {
   width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.container input[type="submit"]:hover {
+input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-.container a {
+a {
   display: block;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 1rem;
   color: #007bff;
   text-decoration: none;
 }
 
-.container a:hover {
+a:hover {
   text-decoration: underline;
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.password-container button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.password-container button:hover {
+  background-color: #0056b3;
 }
