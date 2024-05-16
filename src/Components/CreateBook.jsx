@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./CSS/CreateBook.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,20 @@ function CreateBook() {
   });
 
   const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+
+  const getUserName = async () => {
+    const userID = localStorage.getItem("userID");
+    const response = await axios.get(
+      `http://localhost:5000/api/viewTasks?userID=${userID}`
+    );
+    //console.log(response.data.user.name);
+    setUserName(response.data.user.name);
+  };
+
+  useEffect(() => {
+    getUserName();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +45,10 @@ function CreateBook() {
         "http://localhost:5000/api/addTodo",
         TodoData
       );
-      //console.log(response.data);
+      // console.log(response.data);
+      if (response.status) {
+        alert("Task Saved");
+      }
       setTodoData({
         task_name: "",
         task_description: "",
@@ -57,7 +74,7 @@ function CreateBook() {
   return (
     <div>
       <header>
-        <Navbar handleLogout={handleLogout} />
+        <Navbar userName={userName} handleLogout={handleLogout} />
       </header>
       <div className="themecolor">
         <div className="form-container">

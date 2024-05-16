@@ -1,132 +1,115 @@
 /* ViewTasks.css */
 
-/* Main container */
+body {
+  background-color: #f7fafc;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .container {
   max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
-/* Page title */
-.text-3xl {
-  color: #333;
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 16px;
 }
 
-/* Priority filter dropdown */
-.mb-4 {
-  margin-bottom: 20px;
+.filter-container {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
 }
 
-/* Task card */
+.filter-container label {
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.filter-container select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.task-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .task-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .task-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .task-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #e2e8f0;
 }
 
 .task-card h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.task-card p {
+  font-size: 1.125rem;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
-/* Task actions */
-.task-actions {
-  margin-top: 20px;
+.task-card p {
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.action-buttons {
+  margin-top: 16px;
   display: flex;
-  justify-content: flex-start;
-}
-
-.task-actions a,
-.task-actions button {
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  transition: background-color 0.3s;
-}
-
-.task-actions a {
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-}
-
-.task-actions a:hover {
-  background-color: #0056b3;
-}
-
-.task-actions button {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.task-actions button:hover {
-  background-color: #c82333;
-}
-
-/* Add task button */
-#addtaskbutton {
-  margin-top: 20px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: #fff;
-  transition: background-color 0.3s;
-}
-
-#addtaskbutton:hover {
-  background-color: #218838;
-}
-
-/* ViewTasks.css */
-
-/* Button styles */
-.btn-edit,
-.btn-delete,
-.btn-add {
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  justify-content: start;
 }
 
 .btn-edit {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
+  margin-right: 12px;
+  color: #4299e1;
+  text-decoration: none;
+}
+
+.btn-edit:hover {
+  color: #2b6cb0;
 }
 
 .btn-delete {
-  background-color: #f44336; /* Red */
+  color: #f56565;
+  background: none;
   border: none;
-  color: white;
+  cursor: pointer;
 }
 
-.btn-add {
-  background-color: #008CBA; /* Blue */
+.btn-delete:hover {
+  color: #c53030;
+}
+
+.add-task-btn {
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: #4299e1;
+  color: #fff;
   border: none;
-  color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-/* Hover effects */
-.btn-edit:hover,
-.btn-delete:hover,
-.btn-add:hover {
-  opacity: 0.8;
-}
-
-/* Hover effects for text color */
-.btn-edit:hover,
-.btn-delete:hover,
-.btn-add:hover {
-  color: rgba(255, 255, 255, 0.9);
+.add-task-btn:hover {
+  background-color: #2b6cb0;
 }
