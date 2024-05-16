@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import CreateBook from "./Components/CreateBook.jsx";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import ViewTasks from "./Components/ViewTasks.jsx";
@@ -7,12 +6,6 @@ import StartingPage from "./Components/StartingPage.jsx";
 import UpdateTask from "./Components/UpdateTask.jsx";
 import AuthPage from "./Components/AuthPage.jsx";
 import LoginPage from "./Components/LoginPage.jsx";
-
-// window.addEventListener('hashchange', function() {
-//   if (window.location.pathname === '/') {
-//       localStorage.removeItem('token');
-//   }
-// });
 
 function App() {
   const location = useLocation();
@@ -42,11 +35,6 @@ export default function RootApp() {
     </BrowserRouter>
   );
 }
-
-
-
-
-
 
 // window.addEventListener('load', function() {
 //   if (window.location.pathname === '/login') {
