@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<LoginPage />} />
-        <Route exact path="home" element={<StartingPage />} />
+        <Route exact path="/home" element={<StartingPage />} />
         <Route exact path="/register" element={<AuthPage />} />
         <Route exact path="/addTask" element={<CreateBook />} />
         <Route exact path="/viewTasks" element={<ViewTasks />} />
