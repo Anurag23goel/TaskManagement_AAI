@@ -59,7 +59,7 @@ function CreateBook() {
       );
       // console.log(response.data);
       if (response.status) {
-        alert("Task Saved");
+        alert("Task Added");
       }
       setTodoData({
         task_name: "",

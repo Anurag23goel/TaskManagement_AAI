@@ -40,10 +40,10 @@ const UpdateTask = () => {
           task_priority: response.data.priority,
         });
       })
-      .then((error) => {
-        console.log(error);
-      });
-  }, []);
+      // .then((error) => {
+      //   console.log(error);
+      // });
+  },);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
