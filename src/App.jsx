@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     if (location.pathname === "/") {
       localStorage.removeItem("token");
+      localStorage.removeItem("userID");
     }
   }, [location]);
 
