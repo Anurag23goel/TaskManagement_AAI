@@ -15,12 +15,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // tasks: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Todo",
-  //   },
-  // ],
+
   token: {
     type: String,
     default: null,

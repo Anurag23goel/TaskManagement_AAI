@@ -38,21 +38,38 @@ const loginUser = async (req, res) => {
 
     res.json({ status: "ok", token: token, user: existingUser }); // Include user in response
   } catch (error) {
-    res.status(401).json({ status: "error", error: "Invalid credentials" }); // Return error status code
+    res
+      .status(401)
+      .json({ status: "error", error: "User with this email doesn't exist" }); // Return error status code
   }
 };
 
-const getUser = async (req, res) => {
-  try {
-    const user = await getUsers(); // Assuming getUsers is a function that fetches users
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message || "An error occurred" });
+// const getUser = async (req, res) => {
+//   try {
+//     const user = await getUsers(); // Assuming getUsers is a function that fetches users
+//     res.json(user);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message || "An error occurred" });
+//   }
+// };
+
+const authenticateUser = (req, res) => {
+  const token = req.query.token;  // Access token from query parameters
+  console.log(token);
+  if (!token) {
+    return res.status(400).json({ message: "Token is required" });
   }
+    jwt.verify(token, "anurag123", (err, user) => {
+    if (err) {
+      return res.status(401).json({ message: "Invalid Token" });
+    }
+    res.json({ status: "ok", user });
+  });
 };
+
 
 module.exports = {
   registerUser,
   loginUser,
-  getUser,
+  authenticateUser
 };

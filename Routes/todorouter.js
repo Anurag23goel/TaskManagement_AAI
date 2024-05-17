@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const todo = require("../Models/todo.model.js");
-const User = require("../Models/user.model.js")
+const User = require("../Models/user.model.js");
 const bodyParser = require("body-parser");
+const authenticateToken = require('../middlewares/auth.middleware.js')
 
 // Parse request bodies for PUT requests
 router.use(bodyParser.json());
 
-router.post("/addTodo", async (req, res) => {
+router.post("/addTodo",  async (req, res) => {
   try {
     const newTodo = new todo({
       title: req.body.task_name,
@@ -19,7 +20,6 @@ router.post("/addTodo", async (req, res) => {
 
     const savedTodo = await newTodo.save();
     res.json({ status: true, savedTodo });
-
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred while adding the todo." });
@@ -31,14 +31,13 @@ router.get("/viewTasks", async (req, res) => {
     const userID = req.query.userID; // Assuming userID is passed as a query parameter
     //console.log(userID);
 
-    const user = await User.findById(userID)
-    
+    const user = await User.findById(userID);
 
     // Query todos with the userID filter
     const tasks = await todo.find({ user: userID });
     //console.log(tasks);
 
-    res.status(200).json({tasks:tasks, user:user});
+    res.status(200).json({ tasks: tasks, user: user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred while fetching tasks." });
@@ -88,7 +87,7 @@ router.put("/updateTask/:id", async (req, res) => {
 router.delete("/deleteTask/:id", async (req, res) => {
   try {
     const tasks = await todo.findByIdAndDelete(req.params.id);
-    console.log(req.params.id);
+    // console.log(req.params.id);
     res.status(200).json(tasks);
   } catch (error) {
     console.error(error);
